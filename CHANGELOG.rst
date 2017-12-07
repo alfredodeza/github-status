@@ -1,3 +1,11 @@
+0.0.4
+-----
+Release Date: December 7th, 2017
+
+* Prevent false positives on checking if build was triggered, by only checking
+  that a few ghprb env vars that show up in Jenkins are verified
+
+
 0.0.3
 -----
 Release Date: December 7th, 2017
