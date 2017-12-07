@@ -16,10 +16,8 @@ class TestBuildIsTriggered(object):
 
     def setup(self):
         self.ghprb_env_vars = [
-            'ghprbActualCommit', 'ghprbAuthorRepoGitUrl', 'ghprbCredentialsId', 'ghprbGhRepository',
-            'ghprbPullAuthorLogin', 'ghprbPullAuthorLoginMention', 'ghprbPullDescription',
-            'ghprbPullId', 'ghprbPullLink', 'ghprbPullLongDescription',
-            'ghprbPullTitle', 'ghprbSourceBranch', 'ghprbTargetBranch'
+            'ghprbActualCommit', 'ghprbTriggerAuthor', 'ghprbTargetBranch',
+            'ghprbTriggerAuthorLogin', 'ghprbCredentialsId', 'ghprbGhRepository',
         ]
 
     def test_is_triggered(self, p_env):
