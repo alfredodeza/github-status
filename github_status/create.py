@@ -18,7 +18,7 @@ Create a status for a given commit (sha).
 
     def update(self):
         state = conf['env']['GITHUB_STATUS_STATE']
-        target_url = conf['env']['PARENT_BUILD_URL'] or conf['env']['BUILD_URL']
+        target_url = conf['env'].get('PARENT_BUILD_URL') or conf['env']['BUILD_URL']
         context = conf['env']['GITHUB_STATUS_CONTEXT']
         description_state = dict(
             success=conf['env']['GITHUB_STATUS_SUCCESS'],
@@ -53,6 +53,9 @@ Create a status for a given commit (sha).
         if util.build_is_triggered():
             print('Build has been triggered via Github, will skip setting status')
             return
+        print('Build has not been triggered via Github')
+        print('Assuming manual job execution, will set status')
+
         required_env_vars = [
             'GITHUB_REPOSITORY',
             'GITHUB_SHA',
