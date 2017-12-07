@@ -49,8 +49,6 @@ Create a status for a given commit (sha).
     def main(self):
         parser = Transport(self.argv, check_help=False)
         parser.catch_help = self.help()
-        if len(self.argv) <= 1:
-            return parser.print_help()
         parser.catches_help()
         if util.build_is_triggered():
             print('Build has been triggered via Github, will skip setting status')
