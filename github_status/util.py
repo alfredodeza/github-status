@@ -10,11 +10,10 @@ def build_is_triggered():
     tell us if the build is really being handled by the plugin.
     """
     ghprb_env_vars = [
-        'ghprbActualCommit', 'ghprbAuthorRepoGitUrl', 'ghprbCredentialsId', 'ghprbGhRepository',
-        'ghprbPullAuthorLogin', 'ghprbPullAuthorLoginMention', 'ghprbPullDescription',
-        'ghprbPullId', 'ghprbPullLink', 'ghprbPullLongDescription',
-        'ghprbPullTitle', 'ghprbSourceBranch', 'ghprbTargetBranch'
+        'ghprbActualCommit', 'ghprbTriggerAuthor', 'ghprbTargetBranch',
+        'ghprbTriggerAuthorLogin', 'ghprbCredentialsId', 'ghprbGhRepository',
     ]
+
     return all([bool(os.environ.get(var, False)) for var in ghprb_env_vars])
 
 
