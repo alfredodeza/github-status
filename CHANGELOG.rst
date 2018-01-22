@@ -1,3 +1,11 @@
+0.0.5
+-----
+Release Date: January 22th, 2018
+
+* Trim quotes from env vars, to prevent variables from having extra quotes in
+  them
+
+
 0.0.4
 -----
 Release Date: December 7th, 2017
