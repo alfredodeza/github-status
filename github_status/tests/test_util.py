@@ -1,15 +1,4 @@
-import os
 from github_status import util
-
-import pytest
-
-
-@pytest.fixture
-def p_env(monkeypatch):
-    def patch(environ):
-        monkeypatch.setattr(os, 'environ', environ)
-        monkeypatch.setattr(os, 'getenv', lambda x: environ.get(x))
-    return patch
 
 
 class TestBuildIsTriggered(object):
@@ -26,6 +15,7 @@ class TestBuildIsTriggered(object):
 
     def test_is_not_triggered(self, p_env):
         assert util.build_is_triggered() is False
+
 
 class TestConstructURl(object):
 
