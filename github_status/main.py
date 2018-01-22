@@ -52,8 +52,12 @@ PARENT_BUILD_URL        Optional parent url where actual build happened
         if argv is None:
             argv = sys.argv
         conf['env'] = dict(
-            (k, os.getenv(k)) for k in self.required_env_vars
-        )
+            (k, os.getenv(k)) for k in self.required_env_vars if os.getenv(k) is not None)
+
+        # Go through all the vars again, and make sure that quotes are trimmed. Otherwise
+        # the JSON loading/dumping will add them like u'"foo"' instead of u'foo'
+        for k, v in conf['env'].items():
+            conf['env'][k] = v.replace('"', '').replace("'", '')
         if parse:
             self.main(argv)
 
