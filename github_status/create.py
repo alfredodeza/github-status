@@ -1,4 +1,9 @@
-import urllib2
+try:
+    from urllib2 import Request
+    from urllib2 import urlopen
+except ImportError:
+    from urllib.request import Request
+    from urllib.request import urlopen
 import json
 from tambo import Transport
 from github_status import util, conf
@@ -40,8 +45,8 @@ Create a status for a given commit (sha).
         headers['Content-Type'] = 'application/json'
         headers['Content-Length'] = len(data)
 
-        req = urllib2.Request(url, data, headers)
-        f = urllib2.urlopen(req)
+        req = Request(url, data, headers)
+        f = urlopen(req)
         response = f.read()
         print(json.loads(response))
         f.close()
