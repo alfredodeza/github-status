@@ -1,3 +1,4 @@
+from __future__ import print_function
 import sys
 
 
@@ -19,5 +20,5 @@ Not implemented yet
         return self._help
 
     def main(self, argv):
-        print self.help()
+        print(self.help())
         return
