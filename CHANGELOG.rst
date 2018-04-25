@@ -1,3 +1,10 @@
+0.0.6
+-----
+Release Date: April 25th, 2018
+
+* Catch HTTPErrors, and try to display what the error response was
+
+
 0.0.5
 -----
 Release Date: January 22th, 2018
