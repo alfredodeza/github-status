@@ -1,9 +1,11 @@
 try:
     from urllib2 import Request
     from urllib2 import urlopen
+    from urllib2 import HTTPError
 except ImportError:
     from urllib.request import Request
     from urllib.request import urlopen
+    from urllib.error import HTTPError
 import json
 from tambo import Transport
 from github_status import util, conf
@@ -46,7 +48,12 @@ Create a status for a given commit (sha).
         headers['Content-Length'] = len(data)
 
         req = Request(url, data, headers)
-        f = urlopen(req)
+        try:
+            f = urlopen(req)
+        except HTTPError as error:
+            print('Unable to set the status for %s' % url)
+            print(error.read())
+            return
         response = f.read()
         print(json.loads(response))
         f.close()
